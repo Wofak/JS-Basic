@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- 내장함수, 자체함수 -->
+<!-- String 객체 -->
+
+<body>
+    <script>
+        var txt = "abcdefghijklmnopqrstuvwxyz";
+        console.log(txt.length);
+
+        var txt = "Please locate where locate occur!"
+        console.log(txt.indexOf("locate"));
+
+        var tel = "010-1234-5678";
+
+
+
+
+        // if (txt.indexOf("locate") > -1) {
+        // 글자 존재 여부 확인
+        // }
+
+
+        // if (tel.indexOf("-") > -1) {
+        // console.log("")
+        // }
+
+        // console.log(txt.lastIndexOf(""));
+        // 마지막 텍스트
+
+        // slice - 두개의 파라미터, 1 - 시작 인덱스번호, 2- 종료 인덱스번호
+        var text = "Apple, Banana, Grape, Kiwi"
+        console.log(text.slice(7, 16))
+        //  글자 잘라오기 기능임
+        console.log(text.slice(7)); /* 정한 곳 까지 */
+        console.log(text.slice(-12)); /* 뒤로 돌아감 */
+        console.log(text.slice(-1)); /* 제일 끝자리 */
+
+        // 주민번호와 같은 입력칸에서 정보를 추출할때 활용, 출생연도, 성별 등
+        // 제품 시리얼 번호에서 정보를 추출할때 사용
+
+
+        // substring - slice와 동일하지만 음(-)의 값은 받지못함
+
+        // substr - 두개의 파라미터, 1 - 시작 인덱스번호, 2- 시작으로부터 자를 길이 지정
+        // 개별 날짜 정보 추출할 때 사용
+
+        var date = "20210624";
+        var year = date.slice(0, 4);
+        var year2 = date.substring(0, 4);
+        var year3 = date.substr(0, 4);
+
+        var month = date.slice(4, 6);
+        var month2 = date.substring(4, 6);
+        var month3 = date.substr(4, 2);
+
+
+        var day = date.slice(-2);
+        var day2 = date.substring(6);
+        var day3 = date.substr(6, 2);
+
+        var date = "202134.1320.322324";
+        date.substring(0, date.indexOf("."));
+        date.substring(date.indexOf(".") + 1, date.lastIndexOf("."));
+        var year = date.substr(0, 4);
+        var month = date.substr(5, 2);
+        var day = date.slice(-2);
+
+        console.log(year + "-" + month + "-" + day);
+
+
+
+        // replace 단점은 하나만 바꿔줌.... 
+        // console.log(date.replace(".", "-"));
+        // console.log(date.replace(".", "-"));
+
+        console.log(date.replace(/\./g, "-"));
+        // 정규식 g를 통해 한번에 교체 가능
+
+        //toUpperCase() , toLowerCase()  검색 시 서버와의 비교 조회를 위해
+        var txt = "Hello World";
+        console.log(txt.toUpperCase());
+        console.log(txt.toLowerCase());
+
+
+        //concat() - 문자열을 더해주는 함수, 엑셀 Concatenate
+        var text1 = "Hello";
+        var text2 = "World";
+        console.log(text1.concat(" ", text2, "!"));
+
+
+        //trim() 좌우 여백 공백 제거
+        var text = "    Hello World     ";
+        console.log(text);
+        console.log(text.trim());
+
+
+        //padStart() - 두개의 파라미터, 1- 문자열의 총길이, 2- 뭘로 채울래?
+        var txt = "5";
+        console.log(txt.padStart(4, 0));
+
+        // 예제, 첫번째 문자열, 두번째 총길이, 세번째 뭘로 채울지..
+        // 함수 - fillChar
+        //
+
+        function fillChar(content, length, filler) {
+            while (content.length < length) {
+                content = filler + content;
+
+            }
+            return content;
+
+        }
+
+        console.log(fillChar("9", 4, 0));
+
+
+        // padEnd - padstart의 반대, 뒤에서부터 진행되는 형식
+        var txt = "5";
+        console.log(txt.padEnd(4, 0));
+
+
+        // 
+    </script>
+</body>
+
+</html>
