@@ -124,6 +124,37 @@
         console.log(txt.padEnd(4, 0));
 
 
+        // charAt() - 지정한 위치에 있는 문자만 출력, 1개
+        var txt = "Hello World";
+        console.log(txt.charAt(0))
+
+        // chatCodeAt() - 지정한 위치에 있는 문자의 문자코드 출력
+        console.log(text.charCodeAt(0));
+
+        // split() - 지정한 문자를 기준으로 분리하여 배열에 담아줌
+        // 2021-06-25
+        var date = "2021-06-25";
+        var arr = date.split("-")
+        console.table(arr);
+
+        var tag = "#서울#양평#한경닷컴#잘한다";
+        console.table(tag.split("#"));
+
+        // 배열 join - split으로 나뉘거나, 기존의 배열을 지정문자를 통해 붙여줌
+        console.table(arr.join("/"));
+
+        //startsWith() - 객체가 특정문자로 시작하는지 여부를 확인해줌
+        var url = "http://naver.com"
+        if (url.startsWith("http://") || url.startsWith("http")) {}
+
+
+
+        //endsWith()
+        var imageFile = "logo.jpg";
+        if (imageFile.endsWith(".jpg") || imageFile.endsWith("jpg")) {
+
+        }
+
         // 
     </script>
 </body>

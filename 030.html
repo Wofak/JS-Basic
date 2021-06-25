@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- Sort,filter 예제 -->
+<!-- 자판기 가격순 -->
+<!-- userList 나이순, 이름순 -->
+<!-- 나이가 30인 남성 -->
+
+<body>
+    <script>
+        var productlist = [{
+                name: "솔의눈",
+                price: 700
+            },
+            {
+                name: "커피",
+                price: 700
+            },
+            {
+                name: "파워에이드",
+                price: 1200
+            },
+            {
+                name: "오렌지",
+                price: 1000
+            },
+            {
+                name: "보리차",
+                price: 1200
+            },
+            {
+                name: "밀키스",
+                price: 800
+            }
+        ];
+
+        var p2 = productlist.sort(function (a, b) {
+            return b.price - a.price;
+
+        });
+        console.table(p2);
+    </script>
+
+
+    <script src="4-04.user_data.js"> </script>
+    <script>
+        var p = userList.sort(function (a, b) {
+            return a.age - b.age;
+
+        })
+        console.table(p);
+
+        var n = userList.sort(function (a, b) {
+            return a.name.charCodeAt() - b.name.charCodeAt();
+
+        })
+        console.table(n);
+    </script>
+
+    <script>
+        var output = userList.filter(function (user) {
+            return user.gender == "male" && user.age == 30;
+        });
+        console.table(output);
+    </script>
+</body>
+
+</html>
