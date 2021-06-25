@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- if 조건문 -->
+
+<body>
+    <script>
+        // 조건문 - if
+        // 만일 () {
+        // ~~~ 해야지.
+        // }
+
+
+
+        //  if (조건식) {
+        //  코드선언
+        // }
+
+        var age = 20;
+        var isAdult = false;
+
+        if (age >= 19) {
+            isAdult = true;
+
+        }
+        if (isAdult) {
+            // 성인에 맞는 코드를 실행
+        } else {
+            // isAdult  == false, 무조건 else 블록 실행
+
+        }
+        console.log(isAdult);
+
+        var age = 7;
+        var isFree = false;
+
+        if (age >= 70) {
+            isFree = true;
+
+        } else if (age < 8) {
+            isFree = true;
+
+        } else {
+            isFree = false;
+
+        }
+
+
+        // Q1. 조건상황 내용 if문으로 변경"
+        // var greeting = (time <= 10) ? "Good morining!" : (time <= 16) ? "Good afternoon!" : (time <= 20) ?"Good evening!" : "Good night"
+
+        var time = 15;
+        var greeting = "Good morning!";
+
+        if (time <= 10) {
+            greeting = "Good morning!";
+
+        } else if (time <= 16) {
+            greeting = "Good afternoon!";
+
+        } else if (time <= 20) {
+            greeting = "Good evening!";
+
+        } else {
+            greeting = "Good night!";
+
+        }
+
+
+
+        console.log(greeting)
+    </script>
+</body>
+
+</html>
