@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- Switch 조건문 -->
+
+<body>
+    <script>
+        var d = new Date();
+        var day = d.getDay();
+        console.log("day", day);
+        var dayName = "";
+
+
+        switch (day) {
+            case 0:
+                dayName = "Sunday";
+                break;
+            case 1:
+                dayName = "Monday";
+                break;
+            case 2:
+                dayName = "Tuesday";
+                break;
+            case 3:
+                dayName = "Wednesday";
+                break;
+            case 4:
+                dayName = "Thursday";
+                break;
+            case 5:
+                dayName = "Friday";
+                break;
+            case 6:
+                dayName = "Saturday";
+                break;
+            default:
+                break;
+                // break는 함수를 빠져나오는 역할
+
+        }
+        console.log(dayName);
+        // Switch를 활용하여 상수를 통한 조건문 사용
+
+        var dayNames = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+        console.log(dayNames[day]);
+
+        // 배열을 활용하여 단순하고 가벼운 구현
+    </script>
+</body>
+
+</html>
