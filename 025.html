@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- 함수실습3 -->
+<!-- 계산기 만들기, 숫자 2개에 대한 사칙연산을 수행하는 함수 -->
+<!-- 함수명 Calculator -->
+<!-- 파라미터명 n1, n2, operator -->
+<!-- return 계산된 값 -->
+
+<body>
+    <script>
+        // if로 간결하게 만드는 것도 가능
+        function add(n1, n2) {
+            return n1 + n2;
+        }
+
+        function sub(n1, n2) {
+            return n1 - n2;
+        }
+
+        function mul(n1, n2) {
+            return n1 * n2;
+        }
+
+        function div(n1, n2) {
+            return n1 / n2;
+        }
+
+
+        function Calculator(n1, n2, operator) {
+            switch (operator) {
+                case "+":
+                    return add(n1, n2)
+                case "-":
+                    return sub(n1, n2)
+                case "*":
+                    return mul(n1, n2)
+                case "/":
+                    return div(n1, n2)
+
+            }
+
+        }
+        console.log(Calculator(480, 2, "*"))
+
+
+        function Calculator2(n1, n2, operator) {
+            return eval(n1 + operator + n2);
+            // eval은 보안에 취약해서 사용 지양
+        }
+
+        console.log(Calculator2(25, 40, "+"));
+    </script>
+</body>
+
+</html>
