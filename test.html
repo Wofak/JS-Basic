@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var productlist = [{
+                name: "솔의눈",
+                price: 700
+            },
+            {
+                name: "커피",
+                price: 700
+            },
+            {
+                name: "파워에이드",
+                price: 1200
+            },
+            {
+                name: "오렌지",
+                price: 1000
+            },
+            {
+                name: "보리차",
+                price: 1200
+            },
+            {
+                name: "밀키스",
+                price: 800
+            }
+        ];
+        // var inputCoin = 800;
+
+
+        // var pass = productlist.filter(function (drink) {
+        //     return drink.price <= 1000;
+        // });
+        // console.table(pass);
+
+        function filt(input) {
+            return productlist.filter(function (coin) {
+                return coin.price <= input;
+            });
+
+        }
+        console.table(filt(1000));
+    </script>
+</body>
+
+</html>
