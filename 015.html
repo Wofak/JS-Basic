@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- 조건(삼항) 연산자 -->
+
+<body>
+    <script>
+        var age = 19;
+        var isAdult = (age >= 19) ? true : false
+        // 나이가 19보다 크거나 같은가? 맞으면 T 틀리면 F
+        console.log(isAdult);
+
+        var point = 92;
+        var grade = (point >= 90) ? "A" : (point >= 80) ? "B" : "C"
+        // 점수가 90이상 A, 80이상 B, 그 외 C
+        console.log(grade)
+
+
+        var time = 8;
+        var greeting = (time <= 10) ? "Good morining!" : (time <= 16) ? "Good afternoon!" : (time <= 20) ?
+            "Good evening!" : "Good night"
+        console.log(greeting)
+
+        // 10시, 16시, 20시 기준 별 인사말
+        // 엑셀 if 연속 사용과 유사
+    </script>
+</body>
+
+</html>
