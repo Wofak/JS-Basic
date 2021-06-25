@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- 함수 실습 2 -->
+<!-- 사용자 리스트에서 gender 파라미터를 받고 male, female 해당하는
+데이터만 반환하기 -->
+<!-- 함수명 getUserList -->
+<!-- 파라미터명 gender -->
+<!-- return outputUserList -->
+<!-- 호출 getUserList("male");
+호출 getUserList("female"); -->
+
+<body>
+    <script src="4-04.user_data.js"></script>
+    <script>
+        function getUserList(gender, fromAge, toAge) {
+            var genlist = [];
+            for (var user of userList) {
+                if (user.gender == gender && (user.age <= fromAge || user.age >= toAge)) {
+                    genlist.push(user);
+                }
+
+            }
+            return genlist
+
+        }
+        console.table(getUserList("male", "25", "30"));
+
+        //  문제. 배열안에 배열. for~loop
+        // 함수
+        // 함수명 - printArray
+        // 파라미터 - 배열
+        // 출력 - console.log
+
+        var arr = [
+            [1, 2, 3, 4, 5],
+            [3, 12, 33, 24, 15],
+            [4, 7, 12, 3, 9],
+            [12, 32, 56, 23, 90],
+            [5, 9, 7, 21, 19],
+            [5, 9, 7, 21, 19]
+        ];
+
+        function printArray(arr2D) {
+            let len1 = arr2D.length;
+            for (let i = 0; i < len1; i++) {
+                let len2 = arr2D[i].length;
+                for (let j = 0; j < len2; j++) {
+                    // arr2D[i][j]
+                    console.log(arr2D[i][j]);
+                }
+            }
+        }
+
+        printArray(arr);
+    </script>
+</body>
+
+</html>
