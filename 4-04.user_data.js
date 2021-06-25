@@ -1,3 +1,4 @@
+// json
 var userList = [{
     "_id": "60646eed43013f9997469747",
     "isActive": false,
