@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- 반복문 -->
+
+<body>
+    <script>
+        var brands = ["애플", "아마존", "구글", "페이스북", "삼성"]
+        // console.log(brands[0]);
+        // console.log(brands[1]);
+        // console.log(brands[2]);
+        // console.log(brands[3]);
+        // console.log(brands[4]);
+
+        // <반복문 for ~ loop>
+
+        // 코드1을 무조건 실행시키고, 조건을 판별하여 실행,
+        // 조건이 실행되었으면 코드2 실행
+        // 코드1은 비워두고 미리 선언해놓기도 가능
+
+
+        // for (코드1; 조건; 코드2) {
+        //     // 코드 블록
+        // }
+
+        brands.push("Life was good");
+        for (var i = 0; i < brands.length; i++) {
+            console.log(brands[i]); /* 애플,아마존,구글,페이스북,삼성,LG */
+        }
+        // 다만 brands.length를 내부에 선언하면 할때마다 연산이 
+        // 생기므로 전에 미리 선언해두고 고정변수로 가져오는것이 좋음
+
+
+        // 반복문 for ~ in <= 배열과 오브젝트에 사용가능
+
+        // 키가 존재하지만 키를 확인하지 못하고 모르는 상황
+
+        let person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: "40",
+            tel: "01012345678",
+            email: "asdg@gmail.com"
+        };
+
+        for (var key in person) {
+            // console.log(key);
+            console.log(key, person[key]); /* 객체 안의 키를 하나씩 읽고 키, 내용 순으로 출력 */
+        }
+
+        for (var index in brands) {
+            console.log(brands[index]);
+        }
+
+        // 반복문 for ~ of <= index 지정이 필요없고, 문자열에도 사용이
+
+        for (var brand of brands) {
+            console.log(brand);
+        }
+
+        // 문자열의 경우
+        var lang = "JavaScript"
+        for (var c of lang) {
+            console.log(c);
+        }
+    </script>
+</body>
+
+</html>
