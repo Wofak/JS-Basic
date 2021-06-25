@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- 조건문 실습 1 -->
+
+<body>
+    <script src="4-04.user_data.js"></script>
+
+    <!-- for - loop 버전 -->
+
+    <!-- <script>
+        var len = userList.length;
+        var maleUserList = [];
+        for (var i = 0; i < len; i++) {
+            if (userList[i]["gender"] == "male") {
+                maleUserList.push(userList[i]);
+            }
+        }
+        console.table(maleUserList);
+    </script> -->
+
+    <!-- for - of 버전 -->
+
+    <script>
+        var maleUserList = [];
+
+        for (var user of userList) {
+            if (user.gender == "male") {
+                maleUserList.push(user);
+            }
+        }
+        console.table(maleUserList);
+    </script>
+
+    <!-- for - in 버전 -->
+
+</body>
+
+</html>
