@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<!-- 조건문 실습2 -->
+<!-- 음료자판기 문제, 리스트에서 inputcoin으로 구매할 수 있는 음료목록을 출력 -->
+
+<body>
+    <script>
+        var productlist = [{
+                name: "솔의눈",
+                price: 700
+            },
+            {
+                name: "커피",
+                price: 700
+            },
+            {
+                name: "파워에이드",
+                price: 1200
+            },
+            {
+                name: "오렌지",
+                price: 1000
+            },
+            {
+                name: "보리차",
+                price: 1200
+            },
+            {
+                name: "밀키스",
+                price: 800
+            }
+        ];
+        var inputCoin = 800;
+
+        var DrinkList = [];
+        for (var drink of productlist) {
+            if (drink.price <= inputCoin) {
+                DrinkList.push(drink);
+            }
+        }
+
+
+        console.table(DrinkList);
+    </script>
+</body>
+
+</html>
