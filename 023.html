@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- 함수 실습 -->
+<!-- 음료자판기 문제를 함수로, 사용자가 넣은 돈은 파라미터로 받고
+    구매할 수 있는 음료리스트를 반환하기-->
+
+<body>
+    <script>
+        // 함수를 선언.
+        // 함수 이름은 getProductList
+        // 파라미터는 inputCoin
+        // inputCoin으로 구매할 수 있는 음료 목록을 productList배열에서 추출해서
+        // 새로운 배열로 만들기
+        // 그 녀석을 return
+        //받는 쪽에서는 var, let outputList;
+        // console.table(outputList)
+        var productlist = [{
+                name: "솔의눈",
+                price: 700
+            },
+            {
+                name: "커피",
+                price: 700
+            },
+            {
+                name: "파워에이드",
+                price: 1200
+            },
+            {
+                name: "오렌지",
+                price: 1000
+            },
+            {
+                name: "보리차",
+                price: 1200
+            },
+            {
+                name: "밀키스",
+                price: 800
+            }
+        ];
+        var inputCoin = 800;
+
+
+        // 일반 함수 선언식, 먼저 해석처리됨, 함수 선언과 호출 순서 상관 x
+        function getProductList(inputCoin) {
+            var outputList = [];
+            for (var drink of productlist) {
+                if (drink.price <= inputCoin) {
+                    outputList.push(drink);
+                }
+            }
+            return outputList
+        }
+        let outputList = getProductList(1000);
+        console.table(outputList);
+
+        // 함수 표현식(변수사용식), 변수명 자체가 함수 선언식이 되는 형식
+        // 선언과 호출 순서 상관 o, 순서를 지켜야 작동
+        // var getProductList = function (inputCoin){ ~
+
+        ㅁ
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
