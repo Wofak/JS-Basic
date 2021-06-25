@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- 객체 -->
+
+<body>
+    <script>
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            getFullName: function () {
+                return this.firstName + " " + this.lastName;
+                // 오브젝트 내에서 하위로 접근할 때 this 사용
+
+                // 아니면 person.getFullName = function() {
+                // return ~~
+            }
+        }
+
+        console.log(person.getFullName());
+
+
+        var person = {};
+        var person = new Object();
+        person.firstName = "John";
+        person.lastName = "Doe";
+        // person.getFullName = function () ~~
+    </script>
+</body>
+
+</html>
