@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- while, do-while 구문 -->
+
+<body>
+    <script>
+        var i = 11;
+        var point = 0;
+        while (point <= 100) {
+            point += 4;
+            console.log(i);
+            // i++;
+        }
+
+
+        var i = 11;
+        do {
+            console.log(i);
+        } while (i <= 10);
+
+        // do while 구문은 무조건 코드블록 한번 실행
+
+
+
+
+        var inputPrice = 7000;
+        var coinUnit = 500;
+        var coinCount = 0;
+        while (inputPrice > 0) {
+            inputPrice = inputPrice - coinUnit;
+            coinCount++;
+        }
+        console.log(coinCount);
+    </script>
+
+
+
+
+
+</body>
+
+</html>
