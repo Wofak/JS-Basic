@@ -4,7 +4,7 @@
 <head>
     <title>Document</title>
 </head>
-<!-- Date 객체 -->
+<!-- Date 객체  -->
 
 <body>
     <script>
@@ -35,18 +35,23 @@
         //  월 영문으로 표기
 
         var hour = d.getHours();
+        // d.setHours() 시간을 직접설정
         console.log("hour", hour);
 
+
         var minute = d.getMinutes();
+        // d.setMinutes
         console.log("minute", minute);
 
         var second = d.getSeconds();
+        // d.setSeconds
         console.log("second", second);
 
         var milliseconds = d.getMilliseconds();
+        // d.setMilliseconds
         console.log("milliseconds", milliseconds);
 
-        console.log(d.getTime()); /* 1970.01.01년부터 밀리초로 잰 시간*/
+        console.log(d.getTime()); /* 1970.01.01년부터 밀리초 시간을 반환*/
 
         var dayNameIndex = d.getDay(); // 0-Sun, 1-Mon
         // console.log("dayname",
