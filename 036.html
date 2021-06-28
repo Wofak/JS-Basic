@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- Json객체 -->
+<!-- JSon - Javascript Object Notation -->
+
+<body>
+    <script>
+        //Json
+        //서버로부터 웹페이지로 데이터를 전송할때 사용되는 포맷
+        // JS의 오브젝트 포맷과 매우 유사하여 오브젝트로 바로 사용가능
+
+
+        var productlist = [{
+                name: "솔의눈",
+                price: 700
+            },
+            {
+                name: "커피",
+                price: 700
+            },
+            {
+                name: "파워에이드",
+                price: 1200
+            },
+            {
+                name: "오렌지",
+                price: 1000
+            },
+            {
+                name: "보리차",
+                price: 1200
+            },
+            {
+                name: "밀키스",
+                price: 800
+            }
+        ];
+        console.log(productlist);
+
+        var jsonString = JSON.stringify(productlist);
+        // 문자열로 변환해줌
+        console.log(jsonString);
+
+        var jsonObject = JSON.parse(jsonString);
+        // 다시 오브젝트로 형태로 변환해줌
+        console.log(jsonObject);
+
+
+        // JSON의 경우 오브젝트 형태의 경우 키-밸류 양식에서 "키"에 "" 양식을
+        // 반드시 지켜야함
+    </script>
+</body>
+
+</html>
