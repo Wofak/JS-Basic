@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- math 객체 -->
+
+<body>
+    <script>
+        // round() - 파라미터로 전달받은 숫자형 데이터를 반올림 처리함
+        console.log(Math.round(4.9));
+        console.log(Math.round(4.4));
+        console.log(Math.round(-4.2));
+
+        //ceil() - 파라미터로 전달받은 숫자형 데이터를 무조건 올림처리, 정수로 변환
+        console.log(Math.ceil(4.4));
+
+        //floor() - 무조건 내림처리
+        console.log(Math.floor(4.9));
+
+        //trunc() - 무조건 정수부분만 잘라옴
+        console.log(Math.trunc(7.9));
+        console.log(Math.trunc(7.2));
+
+        //sign() - 양수 값이면 1, 음수면 -1, 0은 0 음양판별
+        console.log(Math.sign(-1));
+        console.log(Math.sign(28));
+
+        //pow() - 제곱
+        console.log(Math.pow(8, 2));
+        console.log(Math.pow(5, 3));
+
+        //sqrt() - 루트값
+        console.log(Math.sqrt(64));
+
+        //abs() - 절대값, 무조건 양수로
+        console.log(Math.abs(-4.8));
+
+        //min(), max() - 최소 최대값
+        console.log(Math.min(2, 21, 45, 33, 5533));
+        console.log(Math.max(2, 21, 45, 33, 5533));
+
+        //random() -실행 할때마다 난수 생성. 0~1사이의 수
+        console.log(Math.random());
+        console.log(Math.floor(Math.random() * 10));
+        // 0~10 t사이
+        console.log(Math.floor(Math.random() * 10)) + 10;
+        // 1~10 t사이
+
+
+        function getRandomInteger(min, max) {
+            return Math.floor(Math.random() * max - min + 1) + min;
+        }
+        console.log(getRandomInteger(1, 10));
+
+
+        //가위,바위,보 게임 함수 만들기
+        //함수명 -rspPlayer
+        //파라미터 1개 가위 바위 보 중에 한개
+        //const arrRsp = ['가위''바위','보'];
+        // random 함수를 써서 0~2 까지 정수를 무작위로 나오게 함
+        // return -{  userRsp: "",  playerRsp: "",   winner: true / false 무승부 = 0 // }
+
+        // Math.floor(Math.random() * 2) - 로 설정하면 나오기는 하지만
+        // 3개의 확률이 동등하지 않아서 균일한 결과값이 x
+
+
+        function rspPlayer(userRsp) {
+            const rsp = ["가위", "바위", "보"];
+            const playerRsp = rsp[getRandomInteger(0, 2)];
+            const winValue = {
+                "가위": "보",
+                "바위": "가위",
+                "보": "바위"
+            };
+            return {
+                "userRsp": userRsp,
+                "playerRsp": playerRsp,
+                "winner": (userRsp == playerRsp) ? 0 : (winValue[userRsp] == playerRsp) ? 1 : -1
+
+            }
+        }
+
+        console.table(rspPlayer("가위"));
+
+
+        // if (userRsp == playerRsp) {
+        //     return {
+        //         "userRsp": useRsp,
+        //         "playerRsp": playerRsp,
+        //         "winner": 0
+        //     };
+        // } else if (userRsp == "가위") {
+        //     if (playerRsp == "보") {
+        //         return {
+        //             "userRsp": useRsp,
+        //             "playerRsp": playerRsp,
+        //             "winner": 1
+        //         }
+        //     } else {
+        //         return {
+        //             "userRsp": userRsp,
+        //             "playerRsp": playerRsp,
+        //             "winner": -1
+        //         }
+        //     } 
+        // }....... 전부 비교하는 방법
+    </script>
+</body>
+
+</html>
