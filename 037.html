@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- window 객체 -- 전역객체,Global 객체 -->
+
+<body>
+    <button type="button" onclick="deleteItem();">삭제</button>
+    <a href="https://naver.com" target="_blank">Naver</a>
+    <script>
+        window.alert("이것은 기본alert창입니다.");
+        // or alert("이것은 기본alert창입니다.");
+
+        if (window.confirm("정말 삭제하시겠습니까?")) {
+            //삭제 로직 입력
+        };
+        // 확인, 취소 버튼으로 물어봄, T/F로 답 받음
+
+        function deleteItem() {
+            if (confirm("정말 삭제하시겠습니까?")) {
+                //삭제 로직
+            }
+        }
+
+        window.prompt("비밀번호를 입력하세요.");
+        // 텍스트를 입력받을 수 있는 필드가 자동으로 형성됨
+
+        var pass = prompt("비밀번호를 입력하세요.");
+        console.log(pass);
+        if (pass == null) {
+            //취소 누른경우
+        } else if (pass == "") {
+
+        } else if (pass != "") {
+            console.log(pass);
+        }
+
+
+        window.open("https://naver.com");
+        // 새창을 열어주는 역할, a태그 blank와 유사
+
+        window.setTimeout(function () {
+            alert("프로그램 실행");
+        }, 2000);
+        //파라미터 2개, 어떤 프로그램, 어떤 밀리초 뒤에 실행 할건지 정함
+
+
+
+        // window.setInterval(function () {
+        //     console.log("프로그램 실행");
+        // }, 1000);
+        // 정해진 주기로 실행됨, 주식차트 새로고침 같은거
+
+
+
+        var count = 0;
+        var fnc = setInterval(function () {
+            if (count < 5) {
+                console.log("프로그램 실행" + count);
+                count++;
+            } else {
+                console.log("종료");
+                clearInterval(fnc);
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
