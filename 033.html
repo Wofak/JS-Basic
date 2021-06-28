@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!--Set 객체, 배열객체와 유사함-->
+<!-- Map 객체 -->
+<!-- ★ -->
+
+<body>
+    <script src="4-04.user_data.js"></script>
+    <script>
+        var arr = [];
+        //  or var arr = new Array();
+        arr.push(1);
+        arr.push(3);
+        console.table(arr);
+
+
+
+        var mySet = new Set();
+        // Array와 달리 약식이 없음..
+        mySet.add(1);
+        mySet.add(3);
+        mySet.add(12);
+
+        mySet.has(3);
+        // 배열 내에 요소가 존재하는지 T/F로 리턴해줌
+
+        mySet.add(3);
+        // Array와 달리 동일한 값은 추가되지 않음
+        // 동일 요소가 없기 때문에 has 사용가능
+        // 여러 데이터 중 유일한 값을 걸러내고 싶을때 사용
+        console.log(mySet);
+
+        mySet.delete(3);
+        console.log(mySet);
+
+        mySet.clear();
+        console.log(mySet);
+        // clear나 delete를 통해 전체,일부 삭제 가능 
+
+
+
+
+        var oUser = {};
+        for (var user of userList) {
+            if (oUser[user.gender]) {
+                oUser[user.gender] += 1;
+                // 처음에는 계산되지 않음, undefined로 설정됨, 아래로
+                // 같은 female일 경우 2로 설정되고,
+                // male일 경우 다시 아래로
+            } else {
+                oUser[user.gender] = 1;
+                // oUser["female"] = 1;
+                // 비어있는 키였기 때문에 1번째 데이터였던 female에 1을 설정해줌
+            }
+        }
+        // 키와 밸류가 설정되어 있지 않은 상황에서 
+        // 자동으로 키,밸류를 설정하고 특정 키를 누계로 표현하는 알고리즘
+
+        console.table(oUser);
+
+        /* Map  */
+
+        //keys를 통해 키만 확인, values를 통해 밸류만 확인 가능
+        // clear나 delete를 통해 전체,일부 삭제 가능 
+
+
+        var key1 = {
+            "keyname": 2
+        };
+        var key2 = [2, 3, 4, 5];
+        /* 키에 문자열 외에 오브젝트를 넣을 수 있다는 특징 */
+        // 배열의 형식을 지키기 때문에 오브젝트 내의 순서를 지킨채 가져올 수 있다
+
+        var myMap = new Map();
+
+        // myMap.set("female", 1);  
+        /* set을 통해 키와 밸류를 넣을 수 있고, */
+        // // console.log(myMap.get("female"));   
+        /* 물러올 때는 키의 이름을 Map.get("키") 방식으로 사용 */
+        /* ★ get으로 키를 불러오면 그 안의 요소가 불러와지는 것 ★ */
+
+        for (var user of userList) {
+            if (myMap.has(user.gender)) {
+                myMap.set(user.gender, myMap.get(user.gender) + 1)
+            } else {
+                myMap.set(user.gender, 1);
+            }
+        }
+
+        console.log(myMap.keys());
+        console.log(myMap.values());
+        // console.log(myMap.delete("female"));
+        console.log(myMap.clear());
+
+
+        /* Map객체를 이용해서 10대, 20대, 30대, 40대가 몇명인지 구해보기 */
+        //  function - getAgeGroup
+        // return - 각 연령대 별 인원수
+
+
+
+
+        function getAgeGroup() {
+            let ageMap = new Map();
+            ageMap.set("10G", 0);
+            ageMap.set("20G", 0);
+            ageMap.set("30G", 0);
+            ageMap.set("40G", 0);
+
+            for (var user of userList) {
+                if (user.age >= 10 && user.age < 20) {
+                    ageMap.set("10G", ageMap.get("10G") + 1)
+                } else if (user.age >= 20 && user.age < 30) {
+                    ageMap.set("20G", ageMap.get("20G") + 1);
+                } else if (user.age >= 30 && user.age < 40) {
+                    ageMap.set("30G", ageMap.get("30G") + 1);
+                } else if (user.age >= 40 && user.age < 50) {
+                    ageMap.set("40G", ageMap.get("40G") + 1);
+                }
+            }
+            return ageMap
+        }
+
+        console.log(getAgeGroup());
+        // table로 하면 값이 나오지 않음, Map이기 때문에 log사용
+
+        /* 다른 풀이 */
+        function getAgeGroup2() {
+            let userAgeGroup = new Map();
+
+            for (var user of userList) {
+                // 문자열의 첫글자를 읽고 뒤에 0을 붙임
+                var ageGroup = user.age.toString().charAt(0) + "0G";
+
+                if (userAgeGroup.has(ageGroup)) {
+                    userAgeGroup.set(ageGroup, userAgeGroup.get(ageGroup) + 1)
+                } else {
+                    // 0인덱스
+                    // userAgeGroup.set("20",1)
+                    // 30대,40대도 순서대로...
+                    userAgeGroup.set(ageGroup, 1);
+                }
+            }
+            return userAgeGroup;
+
+        }
+        console.log(getAgeGroup2());
+
+
+        /* Map 말고 객체 사용 방법  ------- 필기 수정 필요*/
+        /* 연령의 앞자리를 이용하는 방법 but 4살은 40대, 101살은 10대가 됨....*/
+
+        function getAgeGroup3() {
+            let userAgeGroup = {};
+            // 위의 문제를 방지하기위해
+
+            for (var user of userList) {
+                var ageGroup = "";
+                if (user.age < 10) {
+                    ageGroup = "Inf";
+                } else if (user.age >= 100) {
+                    ageGroup = user.age.toString().substr(0, 2) + "0G";
+                } else {
+                    ageGroup = user.age.toString().charAt(0) + "0G";
+                }
+
+                // 문자열의 첫글자를 읽고 뒤에 0을 붙임
+                // var ageGroup = user.age.toString().charAt(0) + "0G";
+
+                if (userAgeGroup[ageGroup]) {
+                    userAgeGroup[ageGroup] += 1;
+                } else {
+                    userAgeGroup[ageGroup] = 1;
+                }
+            }
+
+            return userAgeGroup;
+        }
+
+        console.log(getAgeGroup3());
+    </script>
+</body>
+
+</html>
