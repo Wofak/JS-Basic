@@ -66,9 +66,16 @@
 
         // 함수 표현식(변수사용식), 변수명 자체가 함수 선언식이 되는 형식
         // 선언과 호출 순서 상관 o, 순서를 지켜야 작동
-        // var getProductList = function (inputCoin){ ~
-
-        ㅁ
+        var getProductList2 = function (inputCoin) {
+            let outputList = [];
+            for (var drink of productlist) {
+                if (drink.price <= inputCoin) {
+                    outputList.push(drink);
+                }
+            }
+            return outputList
+        }
+        console.table(getProductList2(800));
     </script>
 
 
