@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- this -->
+
+<body>
+    <button type="button" onclick="doSearch(this);">조회</button>
+    <select name="" id="" onchange="doChange(this);">
+        <option value="1">A</option>
+        <option value="2">B</option>
+        <option value="3">C</option>
+        <option value="4">D</option>
+    </select>
+    <script>
+        //this - 1. this는 window객체
+        console.log(this)
+
+        function myfunction() {
+            console.log(this);
+        }
+
+        myfunction();
+
+
+        //HTML DOM 요소에서 이벤트가 수행이 될때 호출하는 함수에 this를 파라미터 값으로
+        // 전달하면, 이떄 this는 이벤트가 일어나는 HTML DOM 요소 그 자체를 의미
+
+
+        function doSearch(obj) {
+            console.log(obj);
+        }
+
+        function doChange(obj) {
+            console.log(obj);
+            console.log(obj.value);
+        }
+
+        // 3번째, 오브젝트 안에서 할달된 변수에 대해 지정할 때 사용
+
+        let person = {
+            firstName: "John",
+            lastName: "Doe",
+            getFullName: function () {
+                return this.firstName + " " + this.lastName;
+
+            }
+        }
+        person.firstName
+        person["firstName"]
+    </script>
+</body>
+
+</html>
