@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- promise 변형 -->
+<!-- Async Await -->
+<!-- fetch -->
+<!-- fetch 참고 : https://www.daleseo.com/js-window-fetch/ -->
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        //Async-Await
+        const url = "https://1cbca165-77e0-49c8-9093-a9bb044003e5.mock.pstmn.io/"
+
+        async function api(url) {
+            return (await axios.get(url)).data;
+        }
+
+        async function getData(path) {
+            var data = (await api(url + path));
+            console.log(path, data)
+        }
+
+        getData("getDrink")
+
+        // then 대신에 await
+
+
+
+        // Fetch
+        // fetchItems() 함수를 실행하면 프로미스가 이행(Resolved)상태가 됨
+        fetch(url + "getUserList").then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>
