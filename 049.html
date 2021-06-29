@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- Promise -->
+<!-- 참고 url = https://joshua1988.github.io/web-development/javascript/js-async-await/ -->
+<!-- Axios 외부 라이브러리 -->
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        //Promise 라이브러리
+        const url = "https://1cbca165-77e0-49c8-9093-a9bb044003e5.mock.pstmn.io/getUserList";
+        // Postman에서 얻은 url 입력
+
+        // var data = axios.get(url);
+        // console.log(data);
+
+
+        function getData() {
+            return new Promise(function (resolve, reject) {
+                axios.get(url).then(function (response) {
+                    // axios를 통해 데이터를 받아오고 함수 response에 받아 넣는다.
+                    resolve(response.data);
+                });
+            });
+        }
+        getData().then(function (data) {
+            console.log(data);
+        });
+
+
+
+
+
+
+        // DrinkList를 불러올 경우,
+        // postman에서 Mock 서버에 새로운 리퀘스트 만들고 {{url}}getDrink형식으로 url 다시 지정
+        // 위와 같은 형식으로 불러오기 함수 테스트
+        const url2 = "https://1cbca165-77e0-49c8-9093-a9bb044003e5.mock.pstmn.io/getDrink";
+
+        function getDrink() {
+            return new Promise(function (resolve, reject) {
+                axios.get(url2).then(function (response) {
+
+                    resolve(response.data);
+                });
+            });
+        }
+        getDrink().then(function (data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>
