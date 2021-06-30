@@ -112,6 +112,12 @@
 
         function requestDrink(drinkId) {
             let drink = drinkList.filter(d => d.drinkId == drinkId)[0];
+            // {
+            //     drinkId: "1",
+            //     drinkName: "코카콜라",
+            //     price: 700,
+            //     stock: 5
+            // }
             if (drink.stock > 0) {
                 if (total_input_amount >= drink.price) {
                     let changes = total_input_amount - drink.price;
@@ -119,9 +125,13 @@
                         output.insertAdjacentHTML("beforeend",
                             `<p>${drink.drinkName} 음료가 나왔습니다. 잔돈 ${changes}이 나옵니다.</p>`);
                         total_customer_amount += changes;
+                        // 지갑에 잔돈 추가
                         drink.stock -= 1;
+                        // 재고 감소
                         total_input_amount = 0;
+                        // 뽑았으니 잔돈 반환하고 기기에는 0원
                         total_vending_amount -= changes;
+                        // 기기내 잔돈 제거
 
                         document.getElementById("total_input_amount").value = total_input_amount;
                         document.getElementById("total_customer_amount").value = total_customer_amount;
