@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- Document 객체-->
+<!-- queryselector -->
+<!-- getElements -->
+
+<body>
+    <input type="text" name="" id="txt1"><br>
+    <input type="text" name="" id="txt2"><br>
+
+
+
+    <p>ABC</p>
+    <p>DEF</p>
+
+    <label for="">
+        <input type="checkbox" name="chk_interest" id="" value="js"> 자바스크립트
+    </label>
+    <label for="">
+        <input type="checkbox" name="chk_interest" id="" value="html"> HTML
+    </label>
+    <label for="">
+        <input type="checkbox" name="chk_interest" id="" value="css"> CSS
+    </label>
+
+    <div>
+        <label> <input type="radio" name="city" id="" value="제주">제주</label>
+        <label> <input type="radio" name="city" id="" value="서울">서울</label>
+        <label> <input type="radio" name="city" id="" value="부산">부산</label>
+    </div>
+
+
+    <div style="margin-top: 20px">
+        <button onclick="myFunction(event);" id="btnSave" style="padding: 10px;">저장</button>
+        <!-- myFunction() 자리에 this를 넣으면  #btnSave 와 같이 지정할 필요가 없음 -->
+        <!--  myFunction() 자리에 event를 넣으면 클릭시 이벤트 발생한 곳?-->
+    </div>
+
+
+
+    <script>
+        function myFunction() {
+            var btnEle = document.querySelector("#btnSave");
+            btnEle.disabled = true;
+            /* 한번 저장하고 클릭 못하게 만듦 */
+
+            setTimeout(function () {
+                btnEle.disabled = false;
+            }, 2000);
+            /* 2초 후에 다시 저장 가능하도록 만듦 */
+
+            // function myFunction(e) {
+            /* 위의 button onclick자리에 myFucntion(event)로 설정해야함 */
+            //     var btnEle = e.target;
+            //     btnEle.disabled = true;
+
+            //     setTimeout(function () {
+            //         btnEle.disabled = false;
+            //     }, 2000);
+            // }
+
+
+
+            // var ele = document.getElementById("txt1");
+            // /* id를 이용해서 element에 접근 */
+            // console.log(ele);
+
+            // var txt1Value = ele.value;
+            // console.log(txt1Value);
+            // /* txt1에 입력한 정보가 Value에 담기기 때문에 .value를 통해 내용 가져옴 */
+            // /* value외에 다른 값도 가져오기 가능 */
+
+            // var ele2 = document.getElementById("txt2");
+            // ele2.value = "가나다";
+            // /* value에 직접 입력..? */
+
+
+
+            // var pTag = document.getElementsByTagName("p");
+            // /* element태그를 이용해 해당 태그 모두에 접근 */
+            // console.log(pTag);
+
+
+
+
+
+            var chks = document.getElementsByName("chk_interest");
+            /* input type을 이용해 접근 */
+            // console.log(chks);
+
+            // for (var chk of chks) {
+            //     if (chk.checked) {
+            //         console.log(chk.value);
+            //         /* 사용자가 어떠한 것을 체크했는지 가져옴 */
+            //     } else {
+
+            //     }
+            // }
+
+            // document.getElementsByClassName - 클래스 이름으로 접근
+
+
+
+
+            var checkedItems = document.querySelectorAll("[name=chk_interest]:checked")
+            /* CSS와 동일하게 chk_interest의 속성을 골라 가져올 수 있음 */
+            for (var chk of checkedItems) {
+                console.log(chk.value);
+            }
+
+            // document.querySelectorAll("p"); --> P태그 다 가져옴
+
+            console.log(document.querySelector("[name=city]:checked").value);
+            // 단 선택하지 않으면 존재하지 않는 요소의 value를 불러오라하므로, 에러 발생함
+
+
+
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>
