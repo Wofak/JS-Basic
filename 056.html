@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<!-- document객체 tag 활용, 정렬 테이블 -->
+
+<head>
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        tb {
+            border-collapse: collapse;
+
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="sel_gender">
+        <!-- <option value="male">남자</option> -->
+        <!-- <option value="female">여자</option> -->
+    </select>
+
+    <button onclick="doSearch();">조회</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>성별</th>
+                <th>회사</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="4-04.user_data.js"> </script>
+
+
+    <script>
+        var selH = [];
+        selH.push('<option value="male">남자</option>')
+        selH.push('<option value="female">여자</option>')
+
+        document.getElementById("sel_gender").innerHTML = selH.join("");
+
+        function doSearch() {
+            // var gender = document.getElementById("sel_gender").value; /* - gender */
+            var h = [];
+            for (var user of userList) {
+                // if (gender == user.gender) { /* - gender */
+                h.push('<tr>')
+                h.push('<td>' + user.name + '</td>');
+                h.push('<td>' + user.gender + '</td>');
+                h.push('<td>' + user.company + '</td>');
+                h.push('</tr>')
+            }
+            // } /* - gender */
+            // console.log(h.join(""));
+            document.getElementById("tb").innerHTML = h.join("")
+            /* 생성된 배열을 innerHTML을 통해 붙여서(join) 넣어줌 */
+        }
+    </script>
+</body>
+
+</html>
