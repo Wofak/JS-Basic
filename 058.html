@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!-- Select Event -->
+
+<body>
+    <button onclick="myFunction();">클릭</button>
+    <button id="btn">클릭1</button>
+
+    <select name="" id="" onchange="selectCity(this);">
+        <option value="서울">서울</option>
+        <option value="제주">제주</option>
+        <option value="부산">부산</option>
+        <option value="대전">대전</option>
+        <option value="포항">포항</option>
+    </select>
+
+    <select name="" id="" onchange="selectCountry(this);">
+        <option value="">국가를 선택하세요.</option>
+        <option value="ko">대한민국</option>
+        <option value="jp">일본</option>
+    </select>
+    <select name="" id="sel_city"></select>
+
+
+    <script>
+        function myFunction() {
+            console.log("이벤트 onclick을 통해서 발생");
+        }
+        // addEventListener 
+        //파라미터 2개
+        // 이벤트 종류?, 함수 또는 구문, 객체
+
+        document.getElementById("btn").addEventListener("click", function () {
+            console.log("이벤트 클릭됨")
+        })
+
+        function selectCity(ele) {
+            console.log(ele.value);
+        }
+
+        function selectCountry(ele) {
+            console.log(ele.value);
+            var h = [];
+            if (ele.value != "") {
+                consoel.log(ocity[ele.value]);
+                for (var city of oCity[ele.value]) {
+                    h.push('<option value="${city.cityCode}">${city.cityName}</option>')
+                }
+            }
+            console.log(h.join(""));
+            // document.getElementById(~~~
+        }
+
+
+        var cities = [{
+                countryCode: "ko",
+                cityCode: "02",
+                cityName: "서울"
+            },
+            {
+                countryCode: "ko",
+                cityCode: "064",
+                cityName: "제주"
+            },
+            {
+                countryCode: "jp",
+                cityCode: "11",
+                cityName: "도쿄"
+            }
+        ];
+
+        var oCity = {};
+        for (var city of cities) {
+            if (!oCity[city.countryCode]) {
+                oCity[city.countryCode] = [];
+            }
+
+            oCity[city.countryCode].push(city);
+        }
+
+        console.log(oCity);
+
+
+        // var oCity = {
+        //   "ko": [{
+        //       cityCode: "02",
+        //       cityName: "서울"
+        //     },
+        //     {
+        //       cityCode: "064",
+        //       cityName: "제주"
+        //     }
+        //   ],
+        //   "jp": [{
+        //     cityCode: "11",
+        //     cityName: "도쿄"
+        //   }]
+        // };
+
+        function selectCountry(ele) {
+            console.log(ele.value);
+            var h = [];
+            if (ele.value != "") {
+                console.log(oCity[ele.value]);
+                for (var city of oCity[ele.value]) {
+                    h.push(`<option value="${city.cityCode}">${city.cityName}</option>`);
+                }
+            }
+            // console.log(h.join(""));
+
+            document.getElementById("sel_city").innerHTML = h.join("");
+        }
+    </script>
+</body>
+
+</html>
