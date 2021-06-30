@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+<!--target 활용 style 적용  -->
+<!-- font-size의 경우 e.target.style.font-size 가 아니라 -->
+<!-- e.target.style.fontSize 형식의 카멜 케이스로 적용 -->
+
+<body>
+    <input type="text" name="" id="" onblur="myFunction(event);">
+    <script>
+        function myFunction(e) {
+            if (e.target.value == "") {
+                e.target.style.fontSize = "24pt";
+                //fontSize
+                // alert("필수 입력값입니다. 반드시 입력하세요. 입력안하면 못나가요.");
+                // e.target.focus();
+            }
+
+        }
+    </script>
+</body>
+
+</html>
