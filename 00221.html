@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<!-- Subway sample Q -->
+
+<head>
+    <title>Document</title>
+    <style>
+        select {
+            width: 4cm;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>지하철 운임 계산</h1>
+    <label>출발역 선택
+    </label>
+    <div> <select name="" id="start">출발역</select></div>
+
+    <label>도착역 선택
+    </label>
+    <div> <select name="" id="end">도착역</select></div>
+
+    <label> 연령 선택</label>
+    <label><input type="radio" name="Age" value="성인" checked> 성인일반</label>
+    <label><input type="radio" name="Age" value="청소년"> 청소년</label>
+    <label><input type="radio" name="Age" value="어린이"> 어린이</label>
+
+    <div><button onclick="subwayCal()">조회</button></div>
+
+    <div id="output" style="width:40%;height:150px;overflow-y: auto;border:2px solid #222;"></div>
+
+
+    <script>
+        const subwayList = ["영등포구구청역", "당산역", "합정역", "홍대입구역", "신촌역", "이대역", "아현역", "충정로역", "시청역", "을지로3가역", "을지로4가역",
+            "동대문역사문화공원역", "신당역", "상왕십리역", "왕십리역", "한양대역", "뚝섬역", "성수역", "건대입구역", "구의역", "강변역", "잠실나루역", "잠실역",
+            "종합운동장역",
+            "삼성역", "선릉역", "역삼역", "강남역", "서초역", "방배역", "사당역", "낙성대역", "서울대입구역", "봉천역", "신림역", "신대방역", "구로디지털단지역",
+            "대림역",
+            "신도림역", "문래역"
+        ];
+
+
+
+        const intervalDistance = 3170;
+        //성인일반 - 기본운임 : 10km 이내 - 1250원
+        //청소년 - 기본운임 : 10km 이내 - 720원
+        //어린이 - 기본운임 : 10km 이내 - 450원
+
+        //[추가운임]
+        //10~50km 이내 - 5km 마다 100원 추가
+        //50km 초가 - 8km 마다 100원 추가
+
+        //문제
+        //출발역, 도착역을 선택하고, (성인/청소년/어린이)를 선택한 후 조회 버튼을 클릭하면
+        //요금을 계산해서 화면에 보여준다.
+
+        // 역마다 거리 3170, 요금만 계산
+        // 순서는 리스트 순서대로..
+        // 역을 선택하면 선택한 역사이의 거리를 계산        
+        // 순서를 정하고 순서의 (차이) * 3170으로 계산, 거리 / 1000을 통해 km로 변환
+        // 2호선이니 순환선이므로 각 역간의 순방향,역방향 거리를 계산, 절대값으로 계산
+        // -역 간의 인덱스 차이가 20개가 넘어가면 40 - (인덱스 차이)로 부여해서 단거리 운임을 부여-  다른방법 사용....
+        // 성인, 청소년, 어린이 버튼을 나누어서 계산 거리에 따라 기본 운임 부여 판단
+        // 10km가 넘을 경우 변환거리[(차이)*3170] -10000해서 남은 거리를 km로 변환(/1000)하여 경우에 따라 추가운임 합산
+        // if 10km이내 - 기본운임 함수
+        // else if 기본운임 + 추가운임 함수식
+
+        //출발역의 인덱스번호를 가져옵니다. 
+        //도착역의 인덱스번호를 가져옵니다.
+        //도착역의 인덱스번호가 출발역의 인덱스번호 보다 작으면, 총 이동한 역의 수는 도착역 인덱스 - 출발역 인덱스
+        //도착역의 인덱스번호가 출발역의 인덱스번호 보다 크면, 총 이동한 역의 수는 총 역의 개수 - 출발역 인덱스 번호 + 도착역 인덱스 번호
+        //총 이동한 역의 수를 구함.
+        //총 이동한 역의 수 * 역간 거리(3170) = 총 이동 거리
+        //
+        function loadSub() {
+            var s = [];
+            for (var list of subwayList) {
+                s.push('<option id="start">' + list + '</option>')
+
+                document.getElementById("start").innerHTML = s.join("");
+            }
+
+            var e = [];
+            for (var list of subwayList) {
+                e.push('<option id="start">' + list + '</option>')
+
+                document.getElementById("end").innerHTML = e.join("");
+            }
+            document.getElementById("start").value;
+            document.getElementById("end").value;
+        }
+        loadSub();
+
+
+
+        function subwayCal() {
+            let starting = subwayList.indexOf(document.getElementById("start").value);
+            let ending = subwayList.indexOf(document.getElementById("end").value);
+            let age = document.querySelector("[name=Age]:checked").value;
+
+            let Distance = parseInt(ending) - parseInt(starting)
+
+            if (Distance == 0) {
+                return output.insertAdjacentHTML("beforeend", `<p> 출발역과 도착역이 같음.</p>`);
+            }
+
+            var numStation = 0;
+
+            if (Distance > 0) {
+                numStation = parseInt(ending) - parseInt(starting)
+            } else if (Distance < 0) {
+                numStation = subwayList.length - parseInt(ending) + parseInt(starting)
+            }
+
+
+
+            var DistanceM = numStation * 3170
+
+            console.log(DistanceM)
+
+            const cost = calSubwayCost(DistanceM, age);
+
+
+
+            output.insertAdjacentHTML("beforeend", `<p>총 ${numStation}개의 역을 승차했고, 총거리는 ${DistanceM}m입니다.</p>`);
+            output.insertAdjacentHTML("beforeend", `<p>총 요금은 ₩${cost}입니다.</p>`);
+
+
+
+        }
+
+        function calSubwayCost(DistanceM, age) {
+            const basicPrice = (age == "성인") ? 1250 : (age == "청소년") ? 720 : (age == "어린이") ? 450 : 0;
+            if (DistanceM <= 10000) {
+                return basicPrice;
+            } else if (DistanceM <= 50000) {
+                return basicPrice + (Math.ceil((DistanceM - 10000) / 5000) * 100);
+            } else {
+                return basicPrice + ((40000 / 5000) * 100) + (Math.ceil((DistanceM - 50000) / 8000) * 100);
+            }
+            console.log(basicPrice)
+        }
+    </script>
+</body>
+
+</html>
