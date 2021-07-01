@@ -451,7 +451,9 @@
         function selectFood(menuId) {
             const menu = menus.filter(m => m.menuId == menuId)[0];
             if (oSelectFood[menu.menuId]) {
-                return alert("이미 추가된 메뉴입니다.");
+                // return alert("이미 추가된 메뉴입니다.");
+                var btnDable = document.querySelector("#menu");
+                btnDable.disabled = true;
             }
 
             oSelectFood[menu.menuId] = menu;
@@ -465,7 +467,7 @@
             );
             tr.push(
                 `<td><input type="text" value="${menu.price * 1}" style="width:100%;" class="line-sum" readonly></td>`
-                );
+            );
             tr.push('</tr>');
             document.getElementById("selectedMenusTb").insertAdjacentHTML("beforeend", tr.join(""));
 
